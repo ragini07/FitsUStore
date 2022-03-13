@@ -4,7 +4,7 @@ import logo from "./logo.png";
 function App() {
   return (
     <div className="App">
-    <div>dsdcd</div>
+    <div>Fits U ecomm</div>
     </div>
   );
 }
