@@ -1,0 +1,233 @@
+.main-container{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 0;
+}
+
+/* aside */
+.side-content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 16%;
+    background-color: var(--lg-color);
+    margin: 1rem;
+}
+.main-content{
+    width: 80%;
+}
+.side-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.filter-btn{
+    background-color: transparent;
+    border-radius: 0;
+    font-weight: bolder;
+    color: var(--font--secondary-color);
+    padding: 0;
+}
+.filter-btn:hover{
+    background-color: transparent;
+}
+.clear-btn{
+    background-color: transparent;
+    color: var(--secondary-hover);
+    border-radius: 0;
+    padding: 0;
+}
+.clear-btn:hover{
+    background-color: transparent;
+}
+.filter-btn:hover,.clear-btn:hover{
+    border-bottom: 2px solid var(--primary-color);;
+}
+.filter-category{
+    padding: 0.8rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.options{
+    padding: 0.1rem 0.4rem;
+    font-size: 0.9rem;
+}
+.options label{
+    display: block;
+}
+.options label input{
+    margin: 0 0.3rem;
+}
+/* main */
+
+/* product card */
+.grid-3-col{
+    margin: 2rem 1rem;
+    display: grid;
+    /* grid-template-columns: repeat(3,1fr); */
+    grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
+    grid-gap:1.5rem;
+    max-width: 80rem;
+
+}
+
+.card-vertical{
+    display: flex;
+    flex-direction: column;
+    max-width: 14rem;
+    width: 100%;
+    background-color: var(--lg-color);
+    cursor: pointer;
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.25);
+    position: relative;
+}
+.card-vertical:hover{
+    box-shadow: 6px 6px 8px #888888;
+}
+.res-img{
+    width: 100%; 
+    /* max-width: 14rem; */
+    height: 15rem;
+    /* max-width: 100%;
+    height: auto; */
+    object-fit: cover;
+  }
+.text-container{
+    padding: 0 0.5rem;
+}
+.title-wishlist{
+    display: flex;
+    justify-content: space-between;  
+}
+.text-container-title{
+    font-weight: bold;
+    color: var(--secondary-hover)
+}
+.text-container-wishlist{
+    color:var(--light-gray);
+}
+.text-container-desc{
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--light-gray);
+}
+.price{
+    display: flex;
+}
+.price div{
+    padding: 0 0.2rem;
+}
+.sale-price{
+    font-weight: bold;
+}
+.mrp-price{
+    font-weight: bold;
+    color: var(--light-gray);
+    text-decoration: line-through;
+}
+.discount{
+    color:var(--success-color);
+    font-weight: 500;
+}
+.product-btn{
+    width: 90%;
+}
+.product-btn *{
+    padding-right: 0.8rem;
+}
+.card-badge-left{
+    background-color: rgb(136, 87, 22);
+    position: absolute;
+    top: 2%;
+    left: 0;
+    color: var(--lg-color);
+    font-weight: 540;
+}
+.card-badge-right{
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    color: var(--lg-color);
+    font-weight: 540;
+}
+
+
+.rating-badge-number{
+    font-size: 0.8rem;
+}
+/* mobile screen filter option */
+.side-content-mobile{
+    display: none;
+}
+/* onclick to filter button option filter div will appear - change to display block*/
+.option-filter-mobile{
+    background-color: var(--lg-color);
+}
+.fix-pos{
+    position: fixed;
+    bottom: 1%;
+    left: 0;
+    z-index: 1;
+}
+.filter-category-mobile{
+    padding: 0.3rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+}
+.option-mobile{
+    padding-left: 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap:1rem;
+}
+.option-mobile label input{
+    margin-right: 0.5rem;
+}
+.filter-category-mobile *{
+    margin-left: auto;
+}
+.icon-liked{
+    color: var(--primary-color);
+}
+/* out of stock */
+button:disabled{
+    /* cursor: not-allowed; */
+    background-color: var(--light-gray);
+    cursor: auto;
+}
+button:disabled:hover{
+    background-color: var(--light-gray);
+}
+
+@media (max-width:950px){
+    .side-content{
+        width: 20%;
+    }
+    .main-content{
+        width: 70%;
+    }
+}
+@media (max-width:750px){
+    .side-content{
+        width: 30%;
+    }
+    .main-content{
+        width: 60%;
+    }
+}
+@media (max-width:550px){
+    .side-content{
+       display: none;
+    }
+    .main-content{
+        width: 80%;
+        margin-left: 5rem;
+    }
+    .side-content-mobile{
+        display: block;
+    }
+
+}
