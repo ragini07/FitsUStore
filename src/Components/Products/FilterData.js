@@ -8,6 +8,10 @@ function FilterData() {
     const {sortBy , ratingBy , priceRange , showFastDeliveryOnly , showOutOfStock , category} = filterState
   
     const {Beds,Lighting,Decor,Sofas} = category
+
+    const changeHandler = (type , payload) =>{
+        dispatchFilterState({type , payload})
+    }
   return (
     <ul className="filter-title">
                     <li className="filter-category">PRICE</li>
@@ -17,13 +21,13 @@ function FilterData() {
                     <div className="options">
                         <label key="price-1">
                             <input 
-                                onChange = {() => dispatchFilterState({type : "SORT_BY_PRICE" , payload : "Low_To_High"})}
+                                onChange = {() => changeHandler("SORT_BY_PRICE", "Low_To_High")}
                                 checked={sortBy && sortBy === "Low_To_High"}
                                 type="radio" name="price" id="price-1"/>Low to High
                         </label>
                         <label key="price-2">
                             <input 
-                                onChange = {() => dispatchFilterState({type : "SORT_BY_PRICE" , payload : "High_To_Low"})}
+                                onChange = {() => changeHandler("SORT_BY_PRICE","High_To_Low")}
                                 checked={sortBy && sortBy === "High_To_Low"}
                                 type="radio" name="price" id="price-2"/>High to Low
                         </label>
@@ -35,7 +39,7 @@ function FilterData() {
                            Object.keys(category).map(categoryName => {
                                return ( <label key = {categoryName}>
                                <input 
-                                   onChange = {() => dispatchFilterState({type : "BY_CATEGORY" , payload : categoryName})}
+                                   onChange = {() =>  changeHandler("BY_CATEGORY",categoryName)}
                                    checked={category[categoryName]}
                                    type="checkbox" name="category-checkbox" id={categoryName}/>{categoryName}
                            </label>)
@@ -51,7 +55,7 @@ function FilterData() {
                                 return (
                                     <label key = {star}>
                                     <input 
-                                        onChange={() => dispatchFilterState({type : "RATE_BY_STAR" , payload: star })}
+                                        onChange={() => changeHandler("RATE_BY_STAR",star)}
                                         checked={ratingBy && ratingBy === star}
                                         type="radio" name="rate" id={star}/>{star} Star & above
                                 </label >
