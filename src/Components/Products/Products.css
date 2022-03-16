@@ -103,7 +103,7 @@
 }
 .text-container-title{
     font-weight: bold;
-    color: var(--secondary-hover)
+    color: var(--secondary-hover);
 }
 .text-container-wishlist{
     color:var(--light-gray);

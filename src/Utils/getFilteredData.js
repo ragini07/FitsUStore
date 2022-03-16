@@ -23,7 +23,6 @@ export const filterByCategory = (filteredByRatingData , category) => {
             if(category[c])
                 categorySelected = [...categorySelected,c]
         }   
-        // if category checked
         if(categorySelected.length > 0)
             return filteredByRatingData.filter(item => categorySelected.some(c => c === item.category))
         return filteredByRatingData

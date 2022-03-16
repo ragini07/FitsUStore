@@ -1,14 +1,13 @@
+import { initialFilterState } from "../Utils/data"
+
 export const filterReducerFtn = (state,action) => {
     switch(action.type) {
         case "SORT_BY_PRICE" :
             return {...state , sortBy : action.payload}
         case "PRICE_RANGE" :
             return {...state , priceRange : action.payload}
-        case "RATE_BY_STAR" :{
-            console.log(state.ratingBy)
-            return {...state ,ratingBy : action.payload}
-        }
-           
+        case "RATE_BY_STAR" :
+            return {...state ,ratingBy : action.payload}    
         case "SHOW_OUT_OF_STOCK" :
             return {...state , showOutOfStock : !state.showOutOfStock}
         case "SHOW_FAST_DELIVERY" :
@@ -25,12 +24,7 @@ export const filterReducerFtn = (state,action) => {
             return state
         }    
         case "CLEAR_FILTER" : 
-            return { sortBy : "" ,
-                ratingBy : 0 , 
-                priceRange : 10000,
-                showFastDeliveryOnly : false ,
-                showOutOfStock : false,
-                category : {Beds : false , Lighting : false ,Decor : false , Sofas: false}}
+            return initialFilterState
         default :
             return state
     }
