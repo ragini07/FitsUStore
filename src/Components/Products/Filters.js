@@ -1,4 +1,3 @@
-
 // import './ProductList.css'
 
 import React from 'react'
@@ -14,12 +13,12 @@ function Filter() {
     const {Beds,Lighting,Decor,Sofas} = category
    
   return (
-    <div class="side-content">
-                <div class="side-title">
-                    <button class="btn filter-btn">FILTERS</button>
+    <div className="side-content">
+                <div className="side-title">
+                    <button className="btn filter-btn">FILTERS</button>
                     <button 
                         onClick = {() => dispatchFilterState({type : "CLEAR_FILTER"})}
-                         class="btn clear-btn">CLEAR ALL</button>
+                        className="btn clear-btn">CLEAR ALL</button>
                 </div>
                 <FilterData />
                 </div>

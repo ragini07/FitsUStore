@@ -13,7 +13,7 @@ function FilterData() {
                     <li className="filter-category">PRICE</li>
                     <input className="range-input" type="range" id="rangeInput" name="rangeInput"
 	                    min="100" max="10000" step="100" value={priceRange} onChange={(e) => dispatchFilterState({type : "PRICE_RANGE" , payload : e.target.value})}/>                                 
-                    <output id="amount" name="amount" for="rangeInput">{`₹${priceRange}`}</output>
+                    <output id="amount" name="amount" key="rangeInput">{`₹${priceRange}`}</output>
                     <div className="options">
                         <label key="price-1">
                             <input 
@@ -48,8 +48,6 @@ function FilterData() {
                     <div className="options">
                         {
                             ratingStars.map(star => {
-                                console.log(star)
-                                console.log("ratingby"+ratingBy)
                                 return (
                                     <label key = {star}>
                                     <input 
