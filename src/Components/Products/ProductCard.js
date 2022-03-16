@@ -5,7 +5,7 @@ function ProductCard({product}) {
         <div className="card-vertical" >
         <a href="../product/product.html">
             <div className="image-container">
-                <img className="res-img" src={product.imageURL} alt=""/>
+                <img className="res-img" src={product.imageURL} alt="product preview"/>
             </div>
         </a>
         {
