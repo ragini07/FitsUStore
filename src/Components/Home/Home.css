@@ -1,0 +1,81 @@
+
+/* showcase */
+.showcase{
+    width: 100%;
+    height: 400px;
+    background: url('https://media.istockphoto.com/photos/farmhouse-interior-living-room-empty-wall-mockup-in-white-room-with-picture-id1311768804?b=1&k=20&m=1311768804&s=170667a&w=0&h=YQaJ6VJocrz5iu7Kr5yMN6QZwVa_vPggzLB7Wq5__-U=') center center / 100% 100% no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+.title{
+    text-align: center;
+    margin-top: 30px;
+    color:var(--font--secondary-color);
+    font-size: 40px;
+}
+/* homecards */
+.grid-4-col{
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:1.5rem;
+    max-width: 58rem;
+
+}
+.home-card{
+    position: relative;
+    max-width: 200px;
+    display: flex;
+    cursor: pointer;
+}
+.home-card img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+   
+}
+.overlay{
+    border-radius: 20px;
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); 
+    transition: .5s ease;
+    color: var(--lg-color);
+    text-align: center;
+
+}
+.home-card:hover .overlay {
+        background-color: transparent;
+        color: var(--font-primary-color);
+ }
+ @media(max-width:950px){
+    .grid-4-col{
+        grid-template-columns: repeat(2,1fr);
+        grid-gap:1rem;
+        max-width: 25rem;
+     }
+
+     .menu-btn{
+        display: block;
+     }
+
+ }
+ @media(max-width:450px){
+    .grid-4-col{
+        grid-template-columns: auto;
+        grid-gap:1rem;
+        max-width: 25rem;
+        margin-left: 5.5rem;
+     }
+
+     .menu-btn{
+        display: block;
+     }
+
+ }

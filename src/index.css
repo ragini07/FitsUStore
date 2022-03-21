@@ -74,3 +74,6 @@ ul{
 .searchbar{
   display: block;
 }
+.link-btn{
+  color : var(--lg-color)
+}
