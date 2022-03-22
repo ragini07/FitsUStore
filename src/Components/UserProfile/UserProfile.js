@@ -14,7 +14,7 @@ export  function UserProfile() {
     }
   return (<>
     <h2 class="center">Account</h2>
-    <div class="main-container">
+    <div class="main-container-account">
     <div class="container-account">
 <div id="Profile" className="tabcontent">
     <div className="sub-container">

@@ -69,6 +69,28 @@ export const AuthProvider = ({children}) => {
             console.log(error)
         }
     }
+    const signUpUser = async ({firstName , lastName , email , password}) => {
+        try{
+            console.log(email,password)
+           const {data , status} = await axios.post('/api/auth/signup', {
+                email : email , password : password , firstName : firstName , lastName : lastName
+            })
+            if(status === 201){
+                console.log(data)
+                localStorage.setItem('userData', JSON.stringify({
+                    user : data.createdUser
+                }))
+                localStorage.setItem('authToken', JSON.stringify({
+                    token : data.encodedToken
+                }))
+                setToken(data.encodedToken)
+                setUser(data.createdUser)
+            }
+            console.log(token)
+        }catch(error){
+            console.log(error)
+        }
+    }
 
     const logOutUser = () => {
         localStorage.removeItem('userData')
@@ -76,7 +98,7 @@ export const AuthProvider = ({children}) => {
         setToken('')
         setUser('')
     }
-     return <authContext.Provider value = {{loginUser , logOutUser , token , user}}>
+     return <authContext.Provider value = {{loginUser , logOutUser , signUpUser,token , user}}>
         {children}
     </authContext.Provider>
 }

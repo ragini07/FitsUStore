@@ -1,7 +1,7 @@
 import './auth.css'
 import {useState} from 'react'
 import {useAuth} from '../../Context/auth-context' 
-import {useNavigate} from 'react-router-dom'
+import {useNavigate , Link} from 'react-router-dom'
 function Login() {
 
 
@@ -54,7 +54,7 @@ function Login() {
                 onClick={loginWithAdminHandler}>Login with Admin credential</button>
             <span><a href="./forgotPassword.html">Forgot Password ?</a></span>
         </form>
-        <span>Dont have an account? <a href="./signup.html"><strong>Sign Up</strong> </a></span>
+        <span>Dont have an account? <Link to='/signup'><strong>Sign Up</strong> </Link></span>
        
     </div>
 </div>}
