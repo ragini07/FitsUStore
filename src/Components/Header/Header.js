@@ -12,8 +12,7 @@ function Header() {
     const {userData , dispatchUserData } = useUser()
     const {token} = useAuth()
     const {cart , wishlist} = userData
-    console.log("nav bar token")
-    console.log(token)
+
    
   return (<>
 

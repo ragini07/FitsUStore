@@ -14,13 +14,12 @@ function SignUp() {
   const { signUpUser , token} = useAuth()
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log(formData)
     signUpUser(formData)
   }
   return (<>
-{ token ? navigate('/products') :  <div class="container">
-    <div class="form-container sign-up">
-        <form action="#" class="form-data" onSubmit={submitHandler}>
+{ token ? navigate('/products') :  <div className="container">
+    <div className="form-container sign-up">
+        <form action="#" className="form-data" onSubmit={submitHandler}>
             <h1>Create Account</h1>
             <span>Fill below details to start your journey with us</span>
             <div> <input 
@@ -38,16 +37,16 @@ function SignUp() {
                     placeholder="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData , email : e.target.value})}/></div>
-           <div class="input-with-eye">
+           <div className="input-with-eye">
                   <input 
                       type="password" 
                       placeholder="password"
                       value={formData.password}
                       onChange={(e) => setFormData({...formData , password : e.target.value})}/>
-            <i class="fa fa-eye btn-icon eye-icon"></i></div>
-           {/* <div class="input-with-eye"><input type="password" placeholder="confirm password"/>
-            <i class="fa fa-eye-slash btn-icon eye-icon"></i></div> */}
-            <button class="btn sign-up-btn">Sign Up</button>
+            <i className="fa fa-eye btn-icon eye-icon"></i></div>
+           {/* <div className="input-with-eye"><input type="password" placeholder="confirm password"/>
+            <i className="fa fa-eye-slash btn-icon eye-icon"></i></div> */}
+            <button className="btn sign-up-btn">Sign Up</button>
 
         </form>
         <span>Already have an account? <Link to='/login'><strong> Log In</strong> </Link></span>

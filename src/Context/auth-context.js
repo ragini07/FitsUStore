@@ -10,51 +10,25 @@ const authContext = createContext();
 
 export const AuthProvider = ({children}) => {
 
-    // const userData = JSON.parse(localStorage.getItem('userData'))
-    // let initialAuthState = {
-    //     firstName : '',
-    //     lastName : '',
-    //     email : '',
-    //     token : ''
-    // }
-    // if(userData){
-    //     initialAuthState = userData
-    // }
-    // else{
-    //     initialAuthState = {
-    //         firstName : '',
-    //         lastName : '',
-    //         email : '',
-    //         token : ''
-    //     }
-    // }
-    // const [authState , dispatchAuthState] = useReducer(authReducerFtn , initialAuthState)
+    
+
  
     const authToken = JSON.parse(localStorage.getItem('authToken'))
     const userData = JSON.parse(localStorage.getItem('userData'))
     const [token , setToken] = useState(authToken?.token)
     const [user , setUser] = useState(userData?.user)
 
-    // if(authToken){
-    //     setToken(authToken.token)
-    //     setUser(userData.user)
-    // }
-    // else{
-    //     setToken("")
-    //     setUser("")
-    // }
-    console.log(token)
-    
 
 
     const loginUser = async (email , password) => {
         try{
-            console.log(email,password)
+          
            const {data , status} = await axios.post('/api/auth/login', {
                 email : email , password : password
             })
+            console.log(data)
             if(status === 200){
-                console.log(data)
+           
                 localStorage.setItem('userData', JSON.stringify({
                     user : data.foundUser
                 }))
@@ -64,19 +38,19 @@ export const AuthProvider = ({children}) => {
                 setToken(data.encodedToken)
                 setUser(data.foundUser)
             }
-            console.log(token)
+           
         }catch(error){
             console.log(error)
         }
     }
     const signUpUser = async ({firstName , lastName , email , password}) => {
         try{
-            console.log(email,password)
+         
            const {data , status} = await axios.post('/api/auth/signup', {
                 email : email , password : password , firstName : firstName , lastName : lastName
             })
             if(status === 201){
-                console.log(data)
+             
                 localStorage.setItem('userData', JSON.stringify({
                     user : data.createdUser
                 }))

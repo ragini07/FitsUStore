@@ -12,10 +12,10 @@ function Login() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log(email , password)
+   
     loginUser(email , password)
   }
-  console.log(token)
+ 
   
   const loginWithAdminHandler = () => {
     setEmail('test@gmail.com')
@@ -25,9 +25,9 @@ function Login() {
     
   return (<>
 
-{ token ? navigate('/products') : <div class="container">
-    <div class="form-container sign-in">
-        <form action="#" class="form-data" onSubmit={submitHandler}>
+{ token ? navigate('/products') : <div className="container">
+    <div className="form-container sign-in">
+        <form action="#" className="form-data" onSubmit={submitHandler}>
             <h1>Login</h1>
             <span>Please enter you credentials</span>
             <div>  <input 
@@ -35,22 +35,22 @@ function Login() {
                       placeholder="email"
                       value={email}
                       onChange = {(e) => setEmail(e.target.value)}/></div>
-            <div class="input-with-eye">
+            <div className="input-with-eye">
               <input 
                   type="password" 
                   placeholder="password"
                   value={password}
                   onChange = {(e) => setPassword(e.target.value)}/>
-                <i class="fa fa-eye btn-icon eye-icon"></i></div>
-            <div class="left-content">
+                <i className="fa fa-eye btn-icon eye-icon"></i></div>
+            <div className="left-content">
                 <label for="check-1">
                     <input type="checkbox" name="checkbox" id="check-1"/> Remember me
                 </label> 
             </div>
            
-            <button class="btn sign-in-btn">Login</button>
+            <button className="btn sign-in-btn">Login</button>
             <button 
-                class="btn secondary sign-in-btn"
+                className="btn secondary sign-in-btn"
                 onClick={loginWithAdminHandler}>Login with Admin credential</button>
             <span><a href="./forgotPassword.html">Forgot Password ?</a></span>
         </form>
