@@ -1,7 +1,7 @@
 import './auth.css'
 import {useState} from 'react'
 import {useAuth} from '../../Context/auth-context' 
-import {useNavigate , Link} from 'react-router-dom'
+import {useNavigate , Link , Navigate} from 'react-router-dom'
 function Login() {
 
 
@@ -25,7 +25,7 @@ function Login() {
     
   return (<>
 
-{ token ? navigate('/products') : <div className="container">
+{ token ? <Navigate to = '/products'  replace/> : <div className="container">
     <div className="form-container sign-in">
         <form action="#" className="form-data" onSubmit={submitHandler}>
             <h1>Login</h1>

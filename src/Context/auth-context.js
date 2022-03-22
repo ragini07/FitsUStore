@@ -29,10 +29,10 @@ export const AuthProvider = ({children}) => {
             console.log(data)
             if(status === 200){
            
-                localStorage.setItem('userData', JSON.stringify({
+                localStorage?.setItem('userData', JSON.stringify({
                     user : data.foundUser
                 }))
-                localStorage.setItem('authToken', JSON.stringify({
+                localStorage?.setItem('authToken', JSON.stringify({
                     token : data.encodedToken
                 }))
                 setToken(data.encodedToken)
@@ -40,7 +40,7 @@ export const AuthProvider = ({children}) => {
             }
            
         }catch(error){
-            console.log(error)
+            console.log("error in login " ,error)
         }
     }
     const signUpUser = async ({firstName , lastName , email , password}) => {
