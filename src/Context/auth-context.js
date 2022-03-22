@@ -3,22 +3,14 @@ import axios from 'axios';
 import jsonwebtoken from 'jsonwebtoken';
 import { createContext , useContext , useReducer , useState} from 'react';
 
-import { authReducerFtn } from '../Reducer/authReducer';
-
-
 const authContext = createContext();
 
 export const AuthProvider = ({children}) => {
 
-    
-
- 
     const authToken = JSON.parse(localStorage.getItem('authToken'))
     const userData = JSON.parse(localStorage.getItem('userData'))
     const [token , setToken] = useState(authToken?.token)
     const [user , setUser] = useState(userData?.user)
-
-
 
     const loginUser = async (email , password) => {
         try{

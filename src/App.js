@@ -1,5 +1,5 @@
 import "./App.css";
-import { UserProfile,Header ,Login ,SignUp , Products , Cart,WishList, NotFound, Home , ProductDetail} from "./Components/index.js";
+import { UserProfile,Header ,Login ,SignUp , Products , Cart,WishList, NotFound, Home , ProductDetail} from "./Components";
 import Mockman from 'mockman-js'
 import { Routes,Route} from 'react-router-dom';
 

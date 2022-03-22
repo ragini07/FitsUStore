@@ -10,10 +10,7 @@ function ProductDetail() {
     const [isLoading, setIsLoading] = useState(false)
 
     const {id} = useParams();
-    console.log(id)
-    // const {products} = useProducts()
-    // const data = products.find(product => product._id ==  id)
-    // console.log(data)
+  
 
     useEffect(() => {
     (  async  () => {
