@@ -1,7 +1,8 @@
 import "./App.css";
-import { Header ,Login ,SignUp , Products , Cart,WishList, NotFound, Home} from "./Components/index.js";
+import { UserProfile,Header ,Login ,SignUp , Products , Cart,WishList, NotFound, Home , ProductDetail} from "./Components";
 import Mockman from 'mockman-js'
 import { Routes,Route} from 'react-router-dom';
+
 
 function App() {
   return (
@@ -13,8 +14,11 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/products' element={<Products/>} />
+        <Route path='/product/:id' element={<ProductDetail/>} />
+
         <Route path='/cart' element={<Cart/>} />
         <Route path='/wishlist' element={<WishList/>}/>
+        <Route path='/profile' element={<UserProfile/>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path="/testApi" element={<Mockman />} />
       </Routes>
