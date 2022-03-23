@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: 1,
+    _id: uuid(),
     name : 'Spacewood',
     desc : 'Single bed with storage',
     rating : 3,
@@ -20,7 +20,7 @@ export const products = [
     fastDelivery : true,
   },
   {
-    _id: 2,
+    _id: uuid(),
     name : 'Purple',
     desc : 'Modern 1 Seater Sofa',
     rating : 1,
@@ -33,7 +33,7 @@ export const products = [
     fastDelivery : false
   },
   {
-    _id: 3,
+    _id: uuid(),
     name : 'Amaya',
     desc : 'Iron Abstract Metal Wall Art',
     rating : 2,
@@ -46,7 +46,7 @@ export const products = [
     fastDelivery : true
   },
   {
-    _id : 4,
+    _id : uuid(),
     name : 'Amaya',
     desc : 'Double Bed With Storage',
     rating : 4,
@@ -59,7 +59,7 @@ export const products = [
     fastDelivery : true
 },
 {
-    _id : 5,
+    _id : uuid(),
     name : 'Spacewood',
     desc : 'Modern 2 Seater Sofa',
     rating : 5,
@@ -72,7 +72,7 @@ export const products = [
     fastDelivery : true
 },
 {
-    _id : 6,
+    _id : uuid(),
     name : 'Purple',
     desc : 'Hanging Ceramic Planter',
     rating : 3,

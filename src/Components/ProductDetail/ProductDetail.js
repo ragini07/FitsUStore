@@ -1,16 +1,22 @@
 import './ProductDetail.css'
 import {useState , useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import {useNavigate , Link} from 'react-router-dom'
 import axios from 'axios';
 import {Loader} from '../index'
 import { useProducts } from '../../Context/products-context'
+import { useAuth } from '../../Context/auth-context'
+import {useUser} from '../../Context/user-context'
+import {isAlreadyInCart , addToCart ,isAlreadyInWishList , addToWishList , removeFromWishList } from '../../Service/userAction'
 
 function ProductDetail() {
     const [product , setProduct] = useState({})
     const [isLoading, setIsLoading] = useState(false)
-
+    const {token} = useAuth()
     const {id} = useParams();
-  
+    const {userData ,dispatchUserData} = useUser()
+    const navigate = useNavigate()
+    const {cart , wishlist} = userData
 
     useEffect(() => {
     (  async  () => {
@@ -25,7 +31,12 @@ function ProductDetail() {
             }
         })()
     },[])
-  
+    const addToCartHandler = (product) => {
+      token ?  addToCart(dispatchUserData , token , product)  : navigate('/login')
+  }
+  const wishlistHandler = (product) => {
+        token ?  addToWishList(dispatchUserData , token , product)  : navigate('/login') 
+}
   return (
 
  <>
@@ -47,8 +58,22 @@ function ProductDetail() {
                     <p><i class="fa fa-check-square"></i>Price is inclusive of all taxes</p>
                 </div>
                 <div class="cta-btn">
-                    <button class="btn" disabled={!product.inStock}>{product.inStock ? 'Add To Cart' : 'Out Of Stock'}</button>
-                    <button class="btn secondary">Add To Wishlist</button>
+                {
+                    isAlreadyInCart(cart , product) ? 
+                    (<Link to='/cart'> <button class="btn">Go To Cart</button> </Link>) : 
+                    ( <button 
+                        onClick={() => addToCartHandler(product)}
+                        className="btn" 
+                        disabled={!product.inStock}>{product.inStock ? 'Add To Cart' : 'Out Of Stock'}</button>)
+                }
+                  {
+                    isAlreadyInWishList(wishlist , product) ? 
+                    (<Link to='/wishlist'> <button class="btn secondary">Go To WishList</button> </Link>) : 
+                    ( <button 
+                        onClick={() => wishlistHandler(product)}
+                        className="btn secondary" 
+                       >Add To Wishlist</button>)
+                }
                 </div>
           </div>
       </div>

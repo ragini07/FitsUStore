@@ -4,3 +4,8 @@ priceRange : 10000,
 showFastDeliveryOnly : false ,
 showOutOfStock : false,
 category : {Beds : false , Lighting : false ,Decor : false , Sofas: false}}
+
+export const initialUserDataState = {
+    cart : [],
+    wishlist : []
+}

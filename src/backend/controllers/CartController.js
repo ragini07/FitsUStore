@@ -72,6 +72,7 @@ export const addItemToCartHandler = function (schema, request) {
 
 export const removeItemFromCartHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
+  console.log("from backend ",userId)
   try {
     if (!userId) {
       new Response(

@@ -131,9 +131,14 @@
     color:var(--success-color);
     font-weight: 500;
 }
+.btn{
+   
+}
 .product-btn{
     width: 90%;
+    margin: 10px;
 }
+
 .product-btn *{
     padding-right: 0.8rem;
 }
@@ -148,7 +153,7 @@
 .card-badge-right{
     position: absolute;
     top: 2%;
-    right: 1%;
+    right: 2%;
     color: var(--lg-color);
     font-weight: 540;
 }

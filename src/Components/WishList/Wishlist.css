@@ -1,0 +1,20 @@
+.icon-black{
+    color: var(--font-primary-color);
+}
+.icon-black:hover{
+    font-size: large;
+}
+.wishlist-container{
+   margin: auto;
+   max-width: 50rem;
+}
+.title-center{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+@media (max-width:550px){
+    .wishlist-container{
+        margin-left: 4.5rem;
+    }
+}
+
