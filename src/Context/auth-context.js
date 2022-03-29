@@ -15,7 +15,6 @@ export const AuthProvider = ({children}) => {
 
     console.log(token)
     if(token){
-        console.log("in if to call user data from server")
         // getWishlistFromServer(token)
         // getCartFromServer(token)
     }

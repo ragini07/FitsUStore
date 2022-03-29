@@ -15,7 +15,6 @@ export function Cart() {
     const {userData , dispatchUserData } = useUser()
     const {token} = useAuth()
     const {cart , wishlist} = userData
-    console.log(cart)
     useEffect(() => {
 
         const summaryData = cart.reduce((acc,curr) => {
@@ -53,13 +52,7 @@ export function Cart() {
            
             <div className="cart-container">
             <div className="left-container">
-                {/* <div className="address-card">
-                    <div className="detail">
-                        <h5>Deliver To :</h5><span>abc road,sakchi,JSR</span>
-                    </div>
-                    
-                    <button className="btn secondary"><a href="../AddressPage/address.html">Change</a></button>
-                </div> */}
+              
             {
                 cart.map(product => {
                     return (

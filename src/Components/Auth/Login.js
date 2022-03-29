@@ -52,7 +52,7 @@ function Login() {
             <button 
                 className="btn secondary sign-in-btn"
                 onClick={loginWithAdminHandler}>Login with Admin credential</button>
-            <span className='span-txt'><a href="./forgotPassword.html">Forgot Password ?</a></span>
+            <span className='span-txt'>Forgot Password ?</span>
         </form>
         <span className='span-txt'>Dont have an account? <Link to='/signup'><strong>Sign Up</strong> </Link></span>
        

@@ -19,7 +19,6 @@ export const getCartFromServer = async (token) =>{
     })
     if(status === 200) 
          dispatchUserData({type : "SET_CART" , payload : data.cart})
-    console.log('get data from server', data)
  }catch(error){
      console.log(error)
  }

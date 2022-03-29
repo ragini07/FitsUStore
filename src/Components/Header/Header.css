@@ -1,3 +1,9 @@
 .list-link{
     cursor: pointer;
 }
+.main-nav{
+    position: sticky;
+    z-index: 5;
+    top:0;
+    width: 100%;
+}

@@ -61,6 +61,7 @@
     background-color: var(--lg-color);
     border: none;
     cursor: pointer;
+    
 }
 .modal{
     display: block;
