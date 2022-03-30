@@ -29,7 +29,7 @@ function Login() {
     <div className="form-container sign-in">
         <form action="#" className="form-data" onSubmit={submitHandler}>
             <h1>Login</h1>
-            <span>Please enter you credentials</span>
+            <span className='span-txt'>Please enter you credentials</span>
             <div>  <input 
                       type="email" 
                       placeholder="email"
@@ -52,9 +52,9 @@ function Login() {
             <button 
                 className="btn secondary sign-in-btn"
                 onClick={loginWithAdminHandler}>Login with Admin credential</button>
-            <span><a href="./forgotPassword.html">Forgot Password ?</a></span>
+            <span className='span-txt'>Forgot Password ?</span>
         </form>
-        <span>Dont have an account? <Link to='/signup'><strong>Sign Up</strong> </Link></span>
+        <span className='span-txt'>Dont have an account? <Link to='/signup'><strong>Sign Up</strong> </Link></span>
        
     </div>
 </div>}

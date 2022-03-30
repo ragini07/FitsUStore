@@ -2,6 +2,7 @@ import { waitFor } from '@testing-library/react';
 import axios from 'axios';
 import jsonwebtoken from 'jsonwebtoken';
 import { createContext , useContext , useReducer , useState} from 'react';
+import {getCartFromServer , getWishlistFromServer} from '../Service/userAction'
 
 const authContext = createContext();
 
@@ -11,6 +12,11 @@ export const AuthProvider = ({children}) => {
     const userData = JSON.parse(localStorage.getItem('userData'))
     const [token , setToken] = useState(authToken?.token)
     const [user , setUser] = useState(userData?.user)
+
+    if(token){
+        // getWishlistFromServer(token)
+        // getCartFromServer(token)
+    }
 
     const loginUser = async (email , password) => {
         try{

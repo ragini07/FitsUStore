@@ -54,13 +54,14 @@
     flex-direction: column;
     margin: 1.2rem 0;
 }
-.btn{
+.btn-lg{
     margin: 1rem 0;
 }
 .text-btn{
     background-color: var(--lg-color);
     border: none;
     cursor: pointer;
+    
 }
 .modal{
     display: block;

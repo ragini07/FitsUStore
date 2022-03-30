@@ -21,7 +21,7 @@ function SignUp() {
     <div className="form-container sign-up">
         <form action="#" className="form-data" onSubmit={submitHandler}>
             <h1>Create Account</h1>
-            <span>Fill below details to start your journey with us</span>
+            <span className='span-txt'>Fill below details to start your journey with us</span>
             <div> <input 
                     type="text" 
                     placeholder="FirstName"
@@ -49,7 +49,7 @@ function SignUp() {
             <button className="btn sign-up-btn">Sign Up</button>
 
         </form>
-        <span>Already have an account? <Link to='/login'><strong> Log In</strong> </Link></span>
+        <span className='span-txt'>Already have an account? <Link to='/login'><strong> Log In</strong> </Link></span>
        
     </div>
 </div>}
