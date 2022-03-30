@@ -13,7 +13,6 @@ export const AuthProvider = ({children}) => {
     const [token , setToken] = useState(authToken?.token)
     const [user , setUser] = useState(userData?.user)
 
-    console.log(token)
     if(token){
         // getWishlistFromServer(token)
         // getCartFromServer(token)
