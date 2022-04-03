@@ -37,3 +37,9 @@ export const filterByDelivery = (filteredByStockData,showFastDeliveryOnly) => {
         return filteredByStockData.filter(item => item["fastDelivery"])
     return filteredByStockData
 }
+
+export const filterBySearchQuery = (filteredByDeliveryData , searchQuery) => {
+    if(searchQuery)
+        return filteredByDeliveryData.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    return filteredByDeliveryData
+}

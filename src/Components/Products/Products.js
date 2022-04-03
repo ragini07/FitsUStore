@@ -12,7 +12,8 @@ import {filterByPrice,
   filterByCategory,
   filterByStock,
   filterByDelivery,
-  filterByPriceRange
+  filterByPriceRange,
+  filterBySearchQuery
 } from '../../Utils'
 
 
@@ -40,7 +41,7 @@ function Products() {
     },[])
 
     
-    const {sortBy , ratingBy , priceRange ,showFastDeliveryOnly , showOutOfStock , category} = filterState
+    const {sortBy , ratingBy , priceRange ,showFastDeliveryOnly , showOutOfStock , category , searchQuery} = filterState
 
     const sortedData = filterByPrice(products,sortBy)
     const filteredByPriceRangeData = filterByPriceRange(sortedData , priceRange)
@@ -48,7 +49,8 @@ function Products() {
     const filteredByCategoryData = filterByCategory(filteredByRatingData,category)
     const filteredByStockData =  filterByStock(filteredByCategoryData,showOutOfStock)
     const filteredByDeliveryData = filterByDelivery(filteredByStockData,showFastDeliveryOnly)
-    const finalFilteredData = filteredByDeliveryData
+    const filteredBySearchQuery = filterBySearchQuery(filteredByDeliveryData , searchQuery)
+    const finalFilteredData = filteredBySearchQuery
    
   return (
     <div className="main-container">
