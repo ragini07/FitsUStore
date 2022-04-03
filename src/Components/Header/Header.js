@@ -18,9 +18,10 @@ function Header() {
   const { cart, wishlist } = userData;
 
   const searchHandler = (e) => {
-    console.log(location.pathname);
-    navigate("/products");
-    dispatchFilterState({ type: "FILTER_BY_SEARCH", payload: e.target.value });
+    if(location.pathname !== '/products')
+        navigate("/products");
+    else
+         dispatchFilterState({ type: "FILTER_BY_SEARCH", payload: e.target.value });
   };
 
   useEffect(() => {

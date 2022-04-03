@@ -9,7 +9,6 @@ function Home() {
   const {dispatchFilterState } = useProducts();
   const navigate = useNavigate();
 
-  //check if is loading is there in every page or not
   useEffect(() => {
     (async () => {
       try {
