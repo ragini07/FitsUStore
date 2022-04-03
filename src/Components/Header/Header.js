@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useUser}  from '../../Context/user-context'
 import {useAuth} from '../../Context/auth-context' 
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import { useProducts } from '../../Context/products-context'
+
 
 function Header() {
     const [showSearch , setShowSearch] = useState(false)
@@ -16,7 +17,15 @@ function Header() {
     const {token} = useAuth()
     const {cart , wishlist} = userData
 
-   
+    const searchHandler= (e) => {
+        navigate('/products')
+        dispatchFilterState({type : "FILTER_BY_SEARCH", payload : e.target.value})
+    }
+
+    useEffect(() => {
+        dispatchFilterState({type : "FILTER_BY_SEARCH", payload : ""})
+    },[navigate])
+
   return (<>
 
     <nav className="main-nav">
@@ -60,10 +69,13 @@ function Header() {
                 <label for="">
                     <input 
                         value={searchQuery}
-                        onChange={(e) => dispatchFilterState({type : "FILTER_BY_SEARCH", payload : e.target.value})}
+                        onChange={searchHandler}
                         className="searchbar-input search" type="text"  placeholder="type to search"/>
                     <i 
-                        onClick={() => setShowSearch(false)}
+                        onClick={() => {
+                            setShowSearch(false)
+                            dispatchFilterState({type : "FILTER_BY_SEARCH", payload : ""})
+                        }}
                         className="fa fa-times"></i>
                 </label>
             
