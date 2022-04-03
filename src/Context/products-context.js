@@ -4,21 +4,23 @@ import { initialFilterState } from "../Utils/data";
 
 const ProductsContext = createContext();
 
-const  ProductsProvider= ({ children }) => {
-
-    const [products , setProducts ] = useState([])
-    const [filterState , dispatchFilterState] = useReducer(filterReducerFtn , initialFilterState)
+const ProductsProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [filterState, dispatchFilterState] = useReducer(
+    filterReducerFtn,
+    initialFilterState
+  );
   return (
     <ProductsContext.Provider
-      value={{products , setProducts , filterState , dispatchFilterState} }
+      value={{ products, setProducts, filterState, dispatchFilterState }}
     >
       {children}
     </ProductsContext.Provider>
   );
-}
+};
 
 const useProducts = () => {
   return useContext(ProductsContext);
-}
+};
 
-export { useProducts , ProductsProvider}
+export { useProducts, ProductsProvider };

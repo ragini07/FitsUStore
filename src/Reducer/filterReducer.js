@@ -12,17 +12,8 @@ export const filterReducerFtn = (state,action) => {
             return {...state , showOutOfStock : !state.showOutOfStock}
         case "SHOW_FAST_DELIVERY" :
             return {...state , showFastDeliveryOnly : !state.showFastDeliveryOnly}
-        case "BY_CATEGORY" : {
-            if(action.payload === 'Lighting')
-                state = {...state , category : {...state.category , Lighting :  !state.category.Lighting}}
-            if(action.payload === 'Beds') 
-                state = {...state , category : {...state.category , Beds :  !state.category.Beds}}     
-            if(action.payload === 'Decor')
-                state = {...state , category : {...state.category , Decor :  !state.category.Decor}}
-            if(action.payload === 'Sofas')
-                state = {...state , category : {...state.category , Sofas :  !state.category.Sofas}}
-            return state
-        }  
+        case "BY_CATEGORY" : 
+            return state = {...state , category : {...state.category , [action.payload] :  !state.category[action.payload]}}
         case "FILTER_BY_SEARCH" : 
             return {...state , searchQuery :  action.payload}  
         case "CLEAR_FILTER" : 
