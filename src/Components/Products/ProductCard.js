@@ -25,7 +25,6 @@ function ProductCard({product}) {
         
     }
     
-    console.log("product")
     return (
         <div className="card-vertical" >
                 <div 

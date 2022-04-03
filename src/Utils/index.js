@@ -3,4 +3,5 @@ export {filterByPrice ,
      filterByCategory,
     filterByStock,
     filterByDelivery,
-    filterByPriceRange} from './getFilteredData'
+    filterByPriceRange , 
+     filterBySearchQuery} from './getFilteredData'

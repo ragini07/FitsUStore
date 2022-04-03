@@ -22,7 +22,9 @@ export const filterReducerFtn = (state,action) => {
             if(action.payload === 'Sofas')
                 state = {...state , category : {...state.category , Sofas :  !state.category.Sofas}}
             return state
-        }    
+        }  
+        case "FILTER_BY_SEARCH" : 
+            return {...state , searchQuery :  action.payload}  
         case "CLEAR_FILTER" : 
             return initialFilterState
         default :

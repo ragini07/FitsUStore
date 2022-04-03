@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom'
 import { useUser}  from '../../Context/user-context'
 import {useAuth} from '../../Context/auth-context' 
 import { useState } from 'react'
+import { useProducts } from '../../Context/products-context'
 
 function Header() {
-    const [searchInput , setSearchInput] = useState(false)
+    const [showSearch , setShowSearch] = useState(false)
+    const {filterState , dispatchFilterState} = useProducts()
+    const {searchQuery } = filterState
     const navigate = useNavigate()
     const {userData , dispatchUserData } = useUser()
     const {token} = useAuth()
@@ -24,7 +27,7 @@ function Header() {
             </ul>
             <ul className="right-menu">
                 <li className = "list-link"
-                    onClick={() => setSearchInput(true)}>
+                    onClick={() => setShowSearch(true)}>
                     <i className="fa fa-search"></i>
                </li>
                 <li className = "list-link"> 
@@ -52,12 +55,15 @@ function Header() {
         </nav>
     
         {
-            searchInput && (
+            showSearch && (
             <div className="searchbar">
                 <label for="">
-                    <input className="searchbar-input search" type="text"  placeholder="type to search"/>
+                    <input 
+                        value={searchQuery}
+                        onChange={(e) => dispatchFilterState({type : "FILTER_BY_SEARCH", payload : e.target.value})}
+                        className="searchbar-input search" type="text"  placeholder="type to search"/>
                     <i 
-                        onClick={() => setSearchInput(false)}
+                        onClick={() => setShowSearch(false)}
                         className="fa fa-times"></i>
                 </label>
             
