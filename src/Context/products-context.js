@@ -6,13 +6,24 @@ const ProductsContext = createContext();
 
 const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [coupon, setCoupon] = useState();
   const [filterState, dispatchFilterState] = useReducer(
     filterReducerFtn,
     initialFilterState
   );
   return (
     <ProductsContext.Provider
-      value={{ products, setProducts, filterState, dispatchFilterState }}
+      value={{
+        products,
+        setProducts,
+        filterState,
+        dispatchFilterState,
+        modal,
+        setModal,
+        coupon,
+        setCoupon,
+      }}
     >
       {children}
     </ProductsContext.Provider>

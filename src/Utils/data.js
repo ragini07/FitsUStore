@@ -12,3 +12,9 @@ export const initialUserDataState = {
   cart: [],
   wishlist: [],
 };
+
+export const Coupons = [
+  { _id: 1, title: "NEW USER", value: 20 },
+  { _id: 2, title: "BIG BILLION SALE", value: 50 },
+  { _id: 3, title: "DIWALI SALE", value: 30 },
+];
