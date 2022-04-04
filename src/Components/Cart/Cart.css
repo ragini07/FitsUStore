@@ -109,13 +109,16 @@
      padding : 0.2rem 1rem;
      background-color: var(--lg-color);
      width: 18rem;
-     max-height: 19rem;
+     max-height: 21rem;
  }
  .container-coupon{
      display: flex;
      justify-content: space-between;
      margin: 0.8rem 0;
  }
+ .container-coupon span{
+   cursor: pointer;
+}
  .cart-total-container{
      margin: 1.5rem 0;
  }
@@ -129,8 +132,30 @@
      border: 0.5px solid var(--light-gray);
      margin: 0.5rem 0;
  }
- 
- 
+ .modal-close{
+     display: flex;
+     margin-bottom: 1.5rem;
+ }
+ .modal-label{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border: 1px solid var(--light-gray);
+    border-radius: 0.2rem;
+    justify-content: flex-start;
+    padding: 0.2rem 0.4rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+ }
+ .coupon-offer{
+    font-weight: 400;
+    font-size: 0.8rem;
+ }
+ .modal-cta{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
  
  .full-width-btn{
      width: 100%;

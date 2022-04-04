@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import "./Cart.css";
 import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
+import { useProducts } from "../../Context/products-context";
 import { useNavigate, Link } from "react-router-dom";
+import { CouponModal } from "./CouponModal";
 import {
   removeFromCart,
   changeQtyInCart,
@@ -18,6 +20,7 @@ export function Cart() {
   });
   const { userData, dispatchUserData } = useUser();
   const { token } = useAuth();
+  const { modal, setModal, coupon, setCoupon } = useProducts();
   const { cart, wishlist } = userData;
   useEffect(() => {
     const summaryData = cart.reduce(
@@ -49,6 +52,7 @@ export function Cart() {
   };
   return (
     <>
+      <CouponModal />
       {cart.length > 0 ? (
         <>
           <h2 className="center cart">My Cart</h2>
@@ -129,7 +133,7 @@ export function Cart() {
                   <p>
                     <i className="fa fa-tag"></i> Have a Coupon ?{" "}
                   </p>
-                  <a href="#">Apply</a>
+                  <span onClick={() => setModal((prev) => !prev)}>Apply</span>
                 </div>
                 <h4 className="center">
                   PRICE DETAILS:<span>{`(${cart.length}items)`}</span>
@@ -148,6 +152,15 @@ export function Cart() {
                     <p>Delivery</p>
                     <p>FREE</p>
                   </div>
+                  <div className="right-sub-container">
+                    <p>Coupon Applied</p>
+                    <p>
+                      -₹
+                      {`${
+                        coupon ? (coupon.value * cartTotal.TotalAmt) / 100 : "0"
+                      }`}
+                    </p>
+                  </div>
                   <div className="divider"></div>
                   <div className="right-sub-container">
                     <strong>
@@ -155,7 +168,13 @@ export function Cart() {
                       <p>Total Amount</p>
                     </strong>
                     <strong>
-                      <p>₹{cartTotal.TotalAmt}</p>
+                      <p>
+                        ₹
+                        {coupon
+                          ? cartTotal.TotalAmt -
+                            (coupon.value * cartTotal.TotalAmt) / 100
+                          : cartTotal.TotalAmt}
+                      </p>
                     </strong>
                   </div>
                 </div>
