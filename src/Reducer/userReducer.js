@@ -44,6 +44,12 @@ export const userReducerFtn = (state, action) => {
     case "SET_WISHLIST": {
       return { ...state, wishlist: [...action.payload] };
     }
+    case "SET_ORDER_DATA" : {
+        return {...state , orders : [...state.orders ,{...action.payload}]}
+    }
+    case "CLEAR_CART" : {
+        return {...state , cart : []}
+    }
     case "CLEAR_USER_DATA": {
       return initialUserDataState;
     }

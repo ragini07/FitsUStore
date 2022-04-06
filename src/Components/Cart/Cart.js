@@ -3,7 +3,7 @@ import "./Cart.css";
 import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
 import { useProducts } from "../../Context/products-context";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { CouponModal } from "./CouponModal";
 import {
   removeFromCart,
@@ -19,9 +19,10 @@ export function Cart() {
     TotalAmt: 0,
   });
   const { userData, dispatchUserData } = useUser();
-  const { token } = useAuth();
+  const { token , user} = useAuth();
+  const navigate = useNavigate()
   const { modal, setModal, coupon, setCoupon } = useProducts();
-  const { cart, wishlist } = userData;
+  const { cart, wishlist , orders} = userData;
   useEffect(() => {
     const summaryData = cart.reduce(
       (acc, curr) => {
@@ -40,6 +41,7 @@ export function Cart() {
     setCartTotal(summaryData);
   }, [cart]);
 
+  const totalAmount = coupon ? cartTotal.TotalAmt -(coupon.value * cartTotal.TotalAmt) / 100: cartTotal.TotalAmt
   const removeFromCartHandler = (product) => {
     removeFromCart(dispatchUserData, token, product);
   };
@@ -50,6 +52,39 @@ export function Cart() {
     removeFromCart(dispatchUserData, token, product);
     addToWishList(dispatchUserData, token, product);
   };
+
+  const placeOrderHandler = () => {
+    const options = {
+        key: "rzp_test_nUQbLapcRCZOYc",
+        amount: totalAmount * 100,
+        currency: "INR",
+        name: "FitsUStore",
+        description: "Thank you for shopping.",
+        image: "https://github.com/ragini07/FitsUStore/blob/dev/src/assets/logo.png",
+        handler: function (response) {
+            dispatchUserData({type : "SET_ORDER_DATA" , payload : {
+                products: [...cart],
+                amount: totalAmount,
+                paymentId: response.razorpay_payment_id,
+            }})
+            dispatchUserData({type : "CLEAR_CART"})  //do in backend also
+            navigate('/order-summary')
+           
+
+
+        },
+        prefill: {
+          name: `${user.firstName} ${user.lastName}`,
+          email: user.email,
+          contact: "7823912356",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+  }
   return (
     <>
       <CouponModal />
@@ -170,15 +205,14 @@ export function Cart() {
                     <strong>
                       <p>
                         ₹
-                        {coupon
-                          ? cartTotal.TotalAmt -
-                            (coupon.value * cartTotal.TotalAmt) / 100
-                          : cartTotal.TotalAmt}
+                        {totalAmount}
                       </p>
                     </strong>
                   </div>
                 </div>
-                <button className="btn full-width-btn">Place Order</button>
+                <button 
+                onClick={placeOrderHandler}
+                className="btn full-width-btn">Place Order</button>
               </div>
             </div>
           </div>

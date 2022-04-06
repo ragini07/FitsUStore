@@ -9,3 +9,5 @@ export { Products } from "./Products/Products";
 export { ProductDetail } from "./ProductDetail/ProductDetail";
 export { Loader } from "./Loader/Loader";
 export { UserProfile } from "./UserProfile/UserProfile";
+export { OrderSummary } from "./OrderSummary/OrderSummary"
+export {UserTab} from "./UserProfile/UserTab"

@@ -14,9 +14,7 @@ export function UserProfile() {
   };
   return (
     <>
-      <h2 className="center">Account</h2>
-      <div className="main-container-account">
-        <div className="container-account">
+
           <div id="Profile" className="tabcontent">
             <div className="sub-container">
               <div>Name:</div>
@@ -30,8 +28,7 @@ export function UserProfile() {
               Log Out
             </button>
           </div>
-        </div>
-      </div>
+
     </>
   );
 }
