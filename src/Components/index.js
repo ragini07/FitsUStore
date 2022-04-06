@@ -11,3 +11,4 @@ export { Loader } from "./Loader/Loader";
 export { UserProfile } from "./UserProfile/UserProfile";
 export { OrderSummary } from "./OrderSummary/OrderSummary"
 export {UserTab} from "./UserProfile/UserTab"
+export {Footer} from "./Footer/Footer"

@@ -7,3 +7,26 @@
     top:0;
     width: 100%;
 }
+.badge-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    
+}
+.sm-num{
+    background-color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 550;
+    height: 1.1rem;
+    width: 1.1rem;
+}
+.search-conatiner{
+    display: flex;
+    align-items: center;
+}
+.searchbar-input{
+    margin: 0 1rem;
+}

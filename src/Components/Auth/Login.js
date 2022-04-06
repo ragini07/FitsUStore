@@ -48,12 +48,7 @@ function Login() {
                 />
                 <i className="fa fa-eye btn-icon eye-icon"></i>
               </div>
-              <div className="left-content">
-                <label for="check-1">
-                  <input type="checkbox" name="checkbox" id="check-1" />{" "}
-                  Remember me
-                </label>
-              </div>
+             
 
               <button className="btn sign-in-btn">Login</button>
               <button
@@ -62,7 +57,7 @@ function Login() {
               >
                 Login with Admin credential
               </button>
-              <span className="span-txt">Forgot Password ?</span>
+              
             </form>
             <span className="span-txt">
               Dont have an account?{" "}

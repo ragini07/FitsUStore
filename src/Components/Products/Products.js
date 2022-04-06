@@ -73,18 +73,22 @@ function Products() {
     <div className="main-container">
       <Filter />
       <div className="main-content">
-        <div className="grid-3-col">
+       
           {isLoading ? (
             <Loader />
           ) : (
-            finalFilteredData.map((product) => (
+            <>
+             <div className="grid-res-col">
+            {finalFilteredData.map((product) => (
               <ProductCard key={product._id} product={product} />
-            ))
+            ))}
+              </div>
+            </>
           )}
           {!isLoading && finalFilteredData.length === 0 && (
-            <div>No matching product found</div>
+            <div className="center-container">No matching product found</div>
           )}
-        </div>
+      
       </div>
     </div>
   );

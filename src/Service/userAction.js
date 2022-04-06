@@ -71,6 +71,25 @@ export const removeFromCart = async (dispatchUserData, token, product) => {
     console.log(error);
   }
 };
+export const clearCart = async (dispatchUserData, token, cart) => {
+  try {
+    for(const product of cart){
+      const {data}= await axios.delete(
+        `/api/user/cart/${product._id}`,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+    }
+   
+      dispatchUserData({ type: "CLEAR_CART" });
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const changeQtyInCart = async (
   dispatchUserData,
@@ -115,7 +134,6 @@ export const addToWishList = async (dispatchUserData, token, product) => {
       }
     );
     if (status === 200 || status === 201) {
-      console.log("in if");
       dispatchUserData({ type: "ADD_TO_WISHLIST", payload: product });
     }
   } catch (error) {

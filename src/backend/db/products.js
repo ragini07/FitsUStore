@@ -20,6 +20,58 @@ export const products = [
     fastDelivery : true,
   },
   {
+    _id : uuid(),
+    name : 'Amaya',
+    desc : 'Round Shape Planter',
+    rating : 3,
+    price : 8000,
+    salePrice :  6800,
+    imageURL : 'https://ii1.pepperfry.com/media/catalog/product/w/h/494x544/white-polystone-round-planter-by-yuccabe-italia-white-polystone-round-planter-by-yuccabe-italia-amjqxm.jpg',
+    category : 'Decor',
+    isBestSeller : false,
+    inStock : false,
+    fastDelivery : true
+},
+{
+    _id : uuid(),
+    name : 'Purple',
+    desc : 'Table lamp with wood base',
+    rating : 3,
+    price : 3000,
+    salePrice :  2500,
+    imageURL : 'https://ii3.pepperfry.com/media/catalog/product/b/r/494x544/brown-glass--table-lamp---by-new-era-brown-glass--table-lamp---by-new-era-bgystf.jpg',
+    category : 'Lighting',
+    isBestSeller : true,
+    inStock : true,
+    fastDelivery : false
+},
+{
+  _id: uuid(),
+  name : 'Amaya',
+  desc : 'Iron Abstract Metal Wall Art',
+  rating : 2,
+  price : 1800,
+  salePrice :  1400,
+  imageURL : 'https://ii2.pepperfry.com/media/wysiwyg/banners/wallart_trends_web_23122021_1.jpg',
+  category : 'Decor',
+  isBestSeller : false,
+  inStock : true,
+  fastDelivery : true
+},
+{
+  _id : uuid(),
+  name : 'Purple',
+  desc : 'Cluster Hanging Light',
+  rating : 5,
+  price : 3500,
+  salePrice :  2800,
+  imageURL : 'https://ii3.pepperfry.com/media/catalog/product/a/n/494x544/antique-gold-pvc-3-light-cluster-hanging-lights-by-foziq-antique-gold-pvc-3-light-cluster-hanging-li-ow33tw.jpg',
+  category : 'Lighting',
+  isBestSeller : true,
+  inStock : true,
+  fastDelivery : true
+},
+  {
     _id: uuid(),
     name : 'Purple',
     desc : 'Modern 1 Seater Sofa',
@@ -32,19 +84,7 @@ export const products = [
     inStock : true,
     fastDelivery : false
   },
-  {
-    _id: uuid(),
-    name : 'Amaya',
-    desc : 'Iron Abstract Metal Wall Art',
-    rating : 2,
-    price : 1800,
-    salePrice :  1400,
-    imageURL : 'https://ii2.pepperfry.com/media/wysiwyg/banners/wallart_trends_web_23122021_1.jpg',
-    category : 'Decor',
-    isBestSeller : false,
-    inStock : true,
-    fastDelivery : true
-  },
+ 
   {
     _id : uuid(),
     name : 'Amaya',
@@ -85,29 +125,17 @@ export const products = [
     fastDelivery : false
 },
 {
-    _id : uuid(),
-    name : 'Purple',
-    desc : 'Hanging Ceramic Planter',
-    rating : 3,
-    price : 8000,
-    salePrice :  6800,
-    imageURL : 'https://ii2.pepperfry.com/media/catalog/product/e/x/494x544/exclusivelane--black-goblet--metal-hand-painted-hanging-planter-pot-with-jute-exclusivelane--black-g-y2dfu5.jpg',
-    category : 'Decor',
-    isBestSeller : false,
-    inStock : false,
-    fastDelivery : true
+  _id: uuid(),
+  name : 'Amaya',
+  desc : 'Modern 3 Seater Sofa',
+  rating : 3,
+  price : 9000,
+  salePrice :  7000,
+  imageURL : 'https://ii3.pepperfry.com/media/catalog/product/u/r/494x544/urban-artist-3-seater-sofa-in-green-colour-by-jordyblue-urban-artist-3-seater-sofa-in-green-colour-b-xswaua.jpg',
+  category : 'Sofas',
+  isBestSeller : false,
+  inStock : true,
+  fastDelivery : false
 },
-{
-    _id : uuid(),
-    name : 'Purple',
-    desc : 'Table lamp with wood base',
-    rating : 3,
-    price : 3000,
-    salePrice :  2500,
-    imageURL : 'https://ii3.pepperfry.com/media/catalog/product/b/r/494x544/brown-glass--table-lamp---by-new-era-brown-glass--table-lamp---by-new-era-bgystf.jpg',
-    category : 'Lighting',
-    isBestSeller : true,
-    inStock : true,
-    fastDelivery : false
-}
+
 ];

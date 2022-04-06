@@ -80,3 +80,26 @@ ul{
 .sm-res-img{
   max-width: 18rem;
 }
+.active-link{
+  font-weight: 650;
+}
+html::-webkit-scrollbar {
+  width: 8px;
+}
+label {
+  cursor: pointer;
+}
+input{
+  cursor: pointer;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--lg-color);
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+

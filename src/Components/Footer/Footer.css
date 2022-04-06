@@ -1,0 +1,15 @@
+.footer-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem;
+    min-height: 3rem;
+    background-color: var(--primary-color);
+    color: var(--lg-color);
+}
+.footer-center li{
+    margin: 1rem;
+}
+.copyright {
+    font-size: 0.7rem;
+}

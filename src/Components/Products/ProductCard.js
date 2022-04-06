@@ -75,7 +75,7 @@ function ProductCard({ product }) {
         {isAlreadyInCart(cart, product) ? (
           <Link to="/cart">
             {" "}
-            <button class="btn product-btn">Go To Cart</button>{" "}
+            <button className="btn product-btn">Go To Cart</button>{" "}
           </Link>
         ) : (
           <button

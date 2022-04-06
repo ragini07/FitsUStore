@@ -12,14 +12,14 @@ function OrderDetails() {
       {orders.length > 0 ? (
         <>
           <h3 className="center">My Orders</h3>
-          {orders.map(({ products, amount }) => {
+          {orders.map(({ products, amount ,paymentId}) => {
             return (
               <>
-                <div className="order-container">
+                <div key={paymentId} className="order-container">
                   <div className="text-success">Order Confirmed</div>
                   <div className="text-lg">{`Total : ₹${amount}`}</div>
                   {products.map((item) => (
-                    <div className="horizontal-card shadow-lg">
+                    <div key={item._id} className="horizontal-card shadow-lg">
                       <img
                         className="res-img-small img-sm"
                         src={item.imageURL}

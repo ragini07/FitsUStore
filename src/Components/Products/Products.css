@@ -63,13 +63,12 @@
 /* main */
 
 /* product card */
-.grid-3-col{
+.grid-res-col{
     margin: 2rem 1rem;
     display: grid;
-    /* grid-template-columns: repeat(3,1fr); */
-    grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
-    grid-gap:1.5rem;
-    max-width: 80rem;
+    grid-template-columns:repeat(auto-fill, minmax(235px, 1fr));
+    grid-gap : 1rem;
+  
 
 }
 
@@ -82,6 +81,7 @@
     cursor: pointer;
     box-shadow: 2px 5px 5px rgba(0,0,0,0.25);
     position: relative;
+    border-radius: 0.2rem;
 }
 .card-vertical:hover{
     box-shadow: 6px 6px 8px #888888;
@@ -229,7 +229,7 @@ button:disabled:hover{
     }
     .main-content{
         width: 80%;
-        margin-left: 5rem;
+        margin-left: 3rem;
     }
     .side-content-mobile{
         display: block;

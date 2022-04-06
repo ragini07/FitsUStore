@@ -10,6 +10,7 @@ import {
   changeQtyInCart,
   isAlreadyInWishList,
   addToWishList,
+  clearCart
 } from "../../Service/userAction";
 
 export function Cart() {
@@ -73,7 +74,8 @@ export function Cart() {
             paymentId: response.razorpay_payment_id,
           },
         });
-        dispatchUserData({ type: "CLEAR_CART" }); //do in backend also
+        clearCart(dispatchUserData, token , cart)
+        // dispatchUserData({ type: "CLEAR_CART" }); //do in backend also
         navigate("/order-summary");
       },
       prefill: {
@@ -82,7 +84,7 @@ export function Cart() {
         contact: "7823912356",
       },
       theme: {
-        color: "#3399cc",
+        color: "#f2673a",
       },
     };
     const rzp = new window.Razorpay(options);
@@ -99,7 +101,8 @@ export function Cart() {
               <div className="left-container">
                 {cart.map((product) => {
                   return (
-                    <div className="horizontal-card">
+                    <div className="horizontal-card"
+                    key={product._id}>
                       <div>
                         <img
                           className="res-img-small"
@@ -148,7 +151,7 @@ export function Cart() {
                           {isAlreadyInWishList(wishlist, product) ? (
                             <Link to="/wishlist">
                               {" "}
-                              <button class="btn secondary">
+                              <button className="btn secondary">
                                 Go To WishList
                               </button>{" "}
                             </Link>

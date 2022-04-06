@@ -1,9 +1,9 @@
-import React from "react";
+import './Loader.css'
 
 function Loader() {
   return (
-    <div className="text-center">
-      <h4>Loading...</h4>
+    <div className="center-container">
+       <div className="loader"></div>
     </div>
   );
 }
