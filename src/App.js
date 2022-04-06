@@ -10,6 +10,8 @@ import {
   NotFound,
   Home,
   ProductDetail,
+  OrderSummary,
+  UserTab
 } from "./Components";
 import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
@@ -27,7 +29,8 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<WishList />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/order-summary" element={<OrderSummary/>}/>
+        <Route path="/profile" element={<UserTab />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/testApi" element={<Mockman />} />
       </Routes>

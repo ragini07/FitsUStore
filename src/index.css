@@ -77,3 +77,6 @@ ul{
 .link-btn{
   color : var(--lg-color)
 }
+.sm-res-img{
+  max-width: 18rem;
+}

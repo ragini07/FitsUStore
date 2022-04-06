@@ -55,7 +55,6 @@ export const addToCart = async (dispatchUserData, token, product) => {
   }
 };
 export const removeFromCart = async (dispatchUserData, token, product) => {
-  console.log(product._id);
   try {
     const { data, status } = await axios.delete(
       `/api/user/cart/${product._id}`,

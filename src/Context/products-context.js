@@ -8,6 +8,7 @@ const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [modal, setModal] = useState(false);
   const [coupon, setCoupon] = useState();
+
   const [filterState, dispatchFilterState] = useReducer(
     filterReducerFtn,
     initialFilterState
@@ -23,6 +24,7 @@ const ProductsProvider = ({ children }) => {
         setModal,
         coupon,
         setCoupon,
+
       }}
     >
       {children}

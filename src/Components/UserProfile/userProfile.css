@@ -79,6 +79,33 @@
     height: 2rem;
     padding-left: 0.5rem;
 }
+.order-container{
+
+    padding-bottom: 0.5rem;
+    margin: 1rem 0;
+    background-color: rgb(248, 248, 248);
+}
+.order-container *{
+    padding-bottom: 0.6rem;
+    
+}
+.text-success{
+    color : var(--success-color);
+    font-weight: 700;
+}
+.text-lg{
+    font-weight: 550;
+}
+.shadow-lg{
+    box-shadow: none;
+    border: 1px solid var(--light-gray);
+    padding: 0 0.1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.3rem;
+}
+.img-sm{
+    width: 9rem;
+}
 @media (max-width: 600px) {
     .modal-body{
         width: 90%;
