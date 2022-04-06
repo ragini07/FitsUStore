@@ -19,10 +19,10 @@ export function Cart() {
     TotalAmt: 0,
   });
   const { userData, dispatchUserData } = useUser();
-  const { token , user} = useAuth();
-  const navigate = useNavigate()
+  const { token, user } = useAuth();
+  const navigate = useNavigate();
   const { modal, setModal, coupon, setCoupon } = useProducts();
-  const { cart, wishlist , orders} = userData;
+  const { cart, wishlist, orders } = userData;
   useEffect(() => {
     const summaryData = cart.reduce(
       (acc, curr) => {
@@ -41,7 +41,9 @@ export function Cart() {
     setCartTotal(summaryData);
   }, [cart]);
 
-  const totalAmount = coupon ? cartTotal.TotalAmt -(coupon.value * cartTotal.TotalAmt) / 100: cartTotal.TotalAmt
+  const totalAmount = coupon
+    ? cartTotal.TotalAmt - (coupon.value * cartTotal.TotalAmt) / 100
+    : cartTotal.TotalAmt;
   const removeFromCartHandler = (product) => {
     removeFromCart(dispatchUserData, token, product);
   };
@@ -55,36 +57,37 @@ export function Cart() {
 
   const placeOrderHandler = () => {
     const options = {
-        key: "rzp_test_nUQbLapcRCZOYc",
-        amount: totalAmount * 100,
-        currency: "INR",
-        name: "FitsUStore",
-        description: "Thank you for shopping.",
-        image: "https://github.com/ragini07/FitsUStore/blob/dev/src/assets/logo.png",
-        handler: function (response) {
-            dispatchUserData({type : "SET_ORDER_DATA" , payload : {
-                products: [...cart],
-                amount: totalAmount,
-                paymentId: response.razorpay_payment_id,
-            }})
-            dispatchUserData({type : "CLEAR_CART"})  //do in backend also
-            navigate('/order-summary')
-           
-
-
-        },
-        prefill: {
-          name: `${user.firstName} ${user.lastName}`,
-          email: user.email,
-          contact: "7823912356",
-        },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-      const rzp = new window.Razorpay(options);
-      rzp.open();
-  }
+      key: "rzp_test_nUQbLapcRCZOYc",
+      amount: totalAmount * 100,
+      currency: "INR",
+      name: "FitsUStore",
+      description: "Thank you for shopping.",
+      image:
+        "https://github.com/ragini07/FitsUStore/blob/dev/src/assets/logo-large.png",
+      handler: function (response) {
+        dispatchUserData({
+          type: "SET_ORDER_DATA",
+          payload: {
+            products: [...cart],
+            amount: totalAmount,
+            paymentId: response.razorpay_payment_id,
+          },
+        });
+        dispatchUserData({ type: "CLEAR_CART" }); //do in backend also
+        navigate("/order-summary");
+      },
+      prefill: {
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        contact: "7823912356",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
   return (
     <>
       <CouponModal />
@@ -203,16 +206,16 @@ export function Cart() {
                       <p>Total Amount</p>
                     </strong>
                     <strong>
-                      <p>
-                        ₹
-                        {totalAmount}
-                      </p>
+                      <p>₹{totalAmount}</p>
                     </strong>
                   </div>
                 </div>
-                <button 
-                onClick={placeOrderHandler}
-                className="btn full-width-btn">Place Order</button>
+                <button
+                  onClick={placeOrderHandler}
+                  className="btn full-width-btn"
+                >
+                  Place Order
+                </button>
               </div>
             </div>
           </div>

@@ -7,3 +7,4 @@ export {
   filterByPriceRange,
   filterBySearchQuery,
 } from "./getFilteredData";
+export {Popper} from './Popper'
