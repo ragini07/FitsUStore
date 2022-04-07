@@ -35,7 +35,7 @@ export const getWishlistFromServer = async (token) => {
     console.log(error);
   }
 };
-export const addToCart = async (dispatchUserData, token, product) => {
+export const addToCart = async (dispatchUserData, token, product ,toast) => {
   try {
     const { data, status } = await axios.post(
       "/api/user/cart",
@@ -48,13 +48,17 @@ export const addToCart = async (dispatchUserData, token, product) => {
         },
       }
     );
-    if (status === 200 || status === 201)
+    if (status === 200 || status === 201){
       dispatchUserData({ type: "ADD_TO_CART", payload: product });
+      toast.success("Added to Cart!")
+    }
+    
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong!!")
+    console.error("Error in adding item to cart",error);
   }
 };
-export const removeFromCart = async (dispatchUserData, token, product) => {
+export const removeFromCart = async (dispatchUserData, token, product,toast) => {
   try {
     const { data, status } = await axios.delete(
       `/api/user/cart/${product._id}`,
@@ -66,9 +70,30 @@ export const removeFromCart = async (dispatchUserData, token, product) => {
     );
     if (status === 200) {
       dispatchUserData({ type: "REMOVE_FROM_CART", payload: product });
+      toast.error("Removed from Cart!")
     }
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong!!")
+    console.error("Error in removing item from cart",error);
+  }
+};
+export const clearCart = async (dispatchUserData, token, cart) => {
+  try {
+    for(const product of cart){
+      const {data}= await axios.delete(
+        `/api/user/cart/${product._id}`,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+    }
+   
+      dispatchUserData({ type: "CLEAR_CART" });
+   
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -98,10 +123,11 @@ export const changeQtyInCart = async (
       else dispatchUserData({ type: "DECREMENT_QUANTITY", payload: product });
     }
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong!!")
+    console.error("Error in updating product quantity",error);
   }
 };
-export const addToWishList = async (dispatchUserData, token, product) => {
+export const addToWishList = async (dispatchUserData, token, product,toast) => {
   try {
     const { data, status } = await axios.post(
       "/api/user/wishlist",
@@ -115,15 +141,16 @@ export const addToWishList = async (dispatchUserData, token, product) => {
       }
     );
     if (status === 200 || status === 201) {
-      console.log("in if");
       dispatchUserData({ type: "ADD_TO_WISHLIST", payload: product });
+      toast.success("Added to WishList!")
     }
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong!!")
+    console.error("Error in adding item to wishlist",error);
   }
 };
-export const removeFromWishList = async (dispatchUserData, token, product) => {
-  console.log(product._id);
+export const removeFromWishList = async (dispatchUserData, token, product,toast) => {
+  
   try {
     const { data, status } = await axios.delete(
       `/api/user/wishlist/${product._id}`,
@@ -135,8 +162,10 @@ export const removeFromWishList = async (dispatchUserData, token, product) => {
     );
     if (status === 200) {
       dispatchUserData({ type: "REMOVE_FROM_WISHLIST", payload: product });
+      toast.error("Removed from WishList!")
     }
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong!!")
+    console.error("Error in removing item from wishlist",error);
   }
 };

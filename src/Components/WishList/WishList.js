@@ -1,6 +1,7 @@
 import "./Wishlist.css";
 import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
+import {  toast } from 'react-toastify';
 import {
   isAlreadyInCart,
   addToCart,
@@ -14,50 +15,50 @@ function WishList() {
   const { cart, wishlist } = userData;
 
   const addToCartHandler = (product) => {
-    token ? addToCart(dispatchUserData, token, product) : navigate("/login");
+    token ? addToCart(dispatchUserData, token, product,toast) : navigate("/login");
   };
   const wishlistHandler = (product) => {
-    removeFromWishList(dispatchUserData, token, product);
+    removeFromWishList(dispatchUserData, token, product,toast);
   };
   return (
     <>
       {wishlist.length > 0 ? (
-        <div class="wishlist-container">
-          <h2 class="title-center">My WishList</h2>
-          <div class="grid-3-col">
+        <div className="wishlist-container">
+          <h2 className="title-center">My WishList</h2>
+          <div className="grid-res-col">
             {wishlist.map((product) => {
               return (
-                <div class="card-vertical">
-                  <div class="image-container">
+                <div key ={product._id} className="card-vertical">
+                  <div className="image-container">
                     <img
-                      class="res-img"
+                      className="res-img"
                       src={product.imageURL}
                       alt="product preview"
                     />
                   </div>
 
                   {product.isBestSeller && (
-                    <span class="card-badge-left">Best Seller</span>
+                    <span className="card-badge-left">Best Seller</span>
                   )}
                   <span
-                    class="card-badge-right"
+                    className="card-badge-right"
                     onClick={() => wishlistHandler(product)}
                   >
-                    <i class="fa fa-trash  icon-black"></i>
+                    <i className="fa fa-trash  icon-black"></i>
                   </span>
-                  <div class="text-container">
-                    <div class="title-wishlist">
-                      <div class="text-container-title">{product.name}</div>
+                  <div className="text-container">
+                    <div className="title-wishlist">
+                      <div className="text-container-title">{product.name}</div>
                     </div>
-                    <div class="text-container-desc">{product.desc}</div>
+                    <div className="text-container-desc">{product.desc}</div>
                     <span className="rating-badge-number">
                       {product.rating}
                       <i className="fa fa-star filled-star"></i>
                     </span>
-                    <div class="price">
-                      <div class="sale-price">{`₹${product.salePrice}`}</div>
-                      <div class="mrp-price">{`₹${product.price}`}</div>
-                      <div class="discount">{`(${Math.trunc(
+                    <div className="price">
+                      <div className="sale-price">{`₹${product.salePrice}`}</div>
+                      <div className="mrp-price">{`₹${product.price}`}</div>
+                      <div className="discount">{`(${Math.trunc(
                         ((product.price - product.salePrice) / product.price) *
                           100
                       )}% OFF)`}</div>
@@ -70,7 +71,7 @@ function WishList() {
                     {isAlreadyInCart(cart, product) ? (
                       <Link to="/cart">
                         {" "}
-                        <button class="btn product-btn">Go To Cart</button>{" "}
+                        <button className="btn product-btn">Go To Cart</button>{" "}
                       </Link>
                     ) : (
                       <button

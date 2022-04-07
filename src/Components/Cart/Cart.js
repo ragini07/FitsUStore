@@ -4,12 +4,14 @@ import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
 import { useProducts } from "../../Context/products-context";
 import { useNavigate, Link, Navigate } from "react-router-dom";
+import {  toast } from 'react-toastify';
 import { CouponModal } from "./CouponModal";
 import {
   removeFromCart,
   changeQtyInCart,
   isAlreadyInWishList,
   addToWishList,
+  clearCart
 } from "../../Service/userAction";
 
 export function Cart() {
@@ -45,14 +47,14 @@ export function Cart() {
     ? cartTotal.TotalAmt - (coupon.value * cartTotal.TotalAmt) / 100
     : cartTotal.TotalAmt;
   const removeFromCartHandler = (product) => {
-    removeFromCart(dispatchUserData, token, product);
+    removeFromCart(dispatchUserData, token, product,toast);
   };
   const updateCartHandler = (product, type) => {
     changeQtyInCart(dispatchUserData, token, product, type);
   };
   const wishlistHandler = (product) => {
-    removeFromCart(dispatchUserData, token, product);
-    addToWishList(dispatchUserData, token, product);
+    removeFromCart(dispatchUserData, token, product,toast);
+    addToWishList(dispatchUserData, token, product,toast);
   };
 
   const placeOrderHandler = () => {
@@ -73,7 +75,8 @@ export function Cart() {
             paymentId: response.razorpay_payment_id,
           },
         });
-        dispatchUserData({ type: "CLEAR_CART" }); //do in backend also
+        clearCart(dispatchUserData, token , cart)
+        // dispatchUserData({ type: "CLEAR_CART" }); //do in backend also
         navigate("/order-summary");
       },
       prefill: {
@@ -82,7 +85,7 @@ export function Cart() {
         contact: "7823912356",
       },
       theme: {
-        color: "#3399cc",
+        color: "#f2673a",
       },
     };
     const rzp = new window.Razorpay(options);
@@ -99,7 +102,8 @@ export function Cart() {
               <div className="left-container">
                 {cart.map((product) => {
                   return (
-                    <div className="horizontal-card">
+                    <div className="horizontal-card"
+                    key={product._id}>
                       <div>
                         <img
                           className="res-img-small"
@@ -110,7 +114,7 @@ export function Cart() {
 
                       <div className="text-container">
                         <button
-                          className="text-right"
+                          className="text-right action-btn"
                           onClick={() => removeFromCartHandler(product)}
                         >
                           <i className="fa fa-trash"></i>
@@ -148,7 +152,7 @@ export function Cart() {
                           {isAlreadyInWishList(wishlist, product) ? (
                             <Link to="/wishlist">
                               {" "}
-                              <button class="btn secondary">
+                              <button className="btn secondary">
                                 Go To WishList
                               </button>{" "}
                             </Link>

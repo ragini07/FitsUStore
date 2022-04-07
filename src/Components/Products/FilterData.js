@@ -21,8 +21,9 @@ function FilterData() {
   return (
     <ul className="filter-title">
       <li className="filter-category">PRICE</li>
+   
       <input
-        className="range-input"
+        className="range-volume"
         type="range"
         id="rangeInput"
         name="rangeInput"
@@ -34,6 +35,8 @@ function FilterData() {
           dispatchFilterState({ type: "PRICE_RANGE", payload: e.target.value })
         }
       />
+      
+    
       <output
         id="amount"
         name="amount"

@@ -12,9 +12,7 @@ export const initialUserDataState = {
   cart: [],
   wishlist: [],
   orders : []
-    //   products : [],
-    //   paymentID : '',
-    //   amount : ''
+
   
 };
 

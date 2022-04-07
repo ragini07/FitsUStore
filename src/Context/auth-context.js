@@ -4,12 +4,12 @@ import {
   getCartFromServer,
   getWishlistFromServer,
 } from "../Service/userAction";
-
+import {  toast } from 'react-toastify';
 const authContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const authToken = JSON.parse(localStorage.getItem("authToken"));
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const authToken = JSON.parse(localStorage?.getItem("authToken"));
+  const userData = JSON.parse(localStorage?.getItem("userData"));
   const [token, setToken] = useState(authToken?.token);
   const [user, setUser] = useState(userData?.user);
 
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
         email: email,
         password: password,
       });
-      console.log(data);
+
       if (status === 200) {
         localStorage?.setItem(
           "userData",
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         setUser(data.foundUser);
       }
     } catch (error) {
-      console.log("error in login ", error);
+      console.error("error in login ", error);
     }
   };
   const signUpUser = async ({ firstName, lastName, email, password }) => {
@@ -71,7 +71,8 @@ export const AuthProvider = ({ children }) => {
       }
       console.log(token);
     } catch (error) {
-      console.log(error);
+   
+      console.error("error in signup ", error);
     }
   };
 

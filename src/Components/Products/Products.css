@@ -63,13 +63,12 @@
 /* main */
 
 /* product card */
-.grid-3-col{
+.grid-res-col{
     margin: 2rem 1rem;
     display: grid;
-    /* grid-template-columns: repeat(3,1fr); */
-    grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
-    grid-gap:1.5rem;
-    max-width: 80rem;
+    grid-template-columns:repeat(auto-fill, minmax(235px, 1fr));
+    grid-gap : 1rem;
+  
 
 }
 
@@ -82,6 +81,7 @@
     cursor: pointer;
     box-shadow: 2px 5px 5px rgba(0,0,0,0.25);
     position: relative;
+    border-radius: 0.2rem;
 }
 .card-vertical:hover{
     box-shadow: 6px 6px 8px #888888;
@@ -197,6 +197,14 @@
 .icon-liked{
     color: var(--primary-color);
 }
+input[type="checkbox"]:checked {
+    accent-color: var(--primary-color);
+	
+}
+input[type="radio"]:checked {
+    accent-color: var(--primary-color);
+	
+}
 /* out of stock */
 button:disabled{
     /* cursor: not-allowed; */
@@ -206,7 +214,14 @@ button:disabled{
 button:disabled:hover{
     background-color: var(--light-gray);
 }
-
+.hamburger-btn{
+    position: fixed;
+    cursor: pointer;
+    top: 11px;
+    right: 8px;
+    z-index: 5;
+    display: none;
+}
 @media (max-width:950px){
     .side-content{
         width: 20%;
@@ -227,12 +242,30 @@ button:disabled:hover{
     .side-content{
        display: none;
     }
+    .hamburger-btn{
+        display: block;
+    }
     .main-content{
         width: 80%;
-        margin-left: 5rem;
+        margin-left: 3rem;
     }
-    .side-content-mobile{
+   
+    .side-container-mobile{
+        display: none;
+        position: fixed;
+        left:0;
+        overflow-y: auto;
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        z-index: 5;
+        transform: translateX(-500px);
+      
+    }
+    .show{
         display: block;
+        transform: translateX(-20px);  
+       
     }
 
 }

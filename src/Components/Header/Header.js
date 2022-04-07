@@ -1,7 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation , NavLink} from "react-router-dom";
 import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
 import { useState, useEffect } from "react";
@@ -28,17 +28,18 @@ function Header() {
     dispatchFilterState({ type: "FILTER_BY_SEARCH", payload: "" });
   }, [navigate]);
 
+  const activeLink = ({isActive}) => isActive ? "active-link" : ""
   return (
     <>
       <nav className="main-nav">
-        <img src={logo} alt="Brand Logo" />
+       <Link to="/"><img src={logo} alt="Brand Logo" /></Link> 
         <ul className="main-menu">
           <li>
             {" "}
-            <Link to="/">Home</Link>{" "}
+            <NavLink className={activeLink} to="/">Home</NavLink>{" "}
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <NavLink className={activeLink} to="/products">Products</NavLink>
           </li>
         </ul>
         <ul className="right-menu">
@@ -46,26 +47,27 @@ function Header() {
             <i className="fa fa-search"></i>
           </li>
           <li className="list-link">
-            <div
+            <div className="badge-container"
               onClick={() =>
                 token ? navigate("/wishlist") : navigate("/login")
               }
             >
               <i className="fa fa-heart"></i>
-              {token && <span>{wishlist.length}</span>}
+              {token && <span className="number sm-num">{wishlist.length}</span>}
             </div>
           </li>
           <li className="list-link">
-            <div
+            <div className="badge-container"
               onClick={() => (token ? navigate("/cart") : navigate("/login"))}
             >
               <i className="fa fa-shopping-cart"></i>
-              {token && <span>{cart.length}</span>}
+           
+              {token && <span className="number sm-num">{cart.length}</span>}
             </div>
           </li>
 
           <li className="list-link">
-            <div
+            <div 
               onClick={() =>
                 token ? navigate("/profile") : navigate("/login")
               }
@@ -78,7 +80,7 @@ function Header() {
 
       {showSearch && (
         <div className="searchbar">
-          <label for="">
+          <label className="search-conatiner">
             <input
               value={searchQuery}
               onChange={searchHandler}
@@ -91,7 +93,7 @@ function Header() {
                 setShowSearch(false);
                 dispatchFilterState({ type: "FILTER_BY_SEARCH", payload: "" });
               }}
-              className="fa fa-times"
+              className="fa fa-times fa-2x"
             ></i>
           </label>
         </div>

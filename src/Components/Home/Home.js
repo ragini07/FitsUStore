@@ -3,6 +3,7 @@ import "./Home.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useProducts } from "../../Context/products-context";
 import axios from "axios";
+import {Footer} from '../index'
 function Home() {
   const [homeCategory, setHomeCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,21 +26,21 @@ function Home() {
     <>
       <header className="showcase">
         <h1>Big Savings on your daily comfort</h1>
-        <button class="btn">
+        <button className="btn">
           <Link to="/products" className="link-btn">
             {" "}
-            Shop Now <i class="fa fa-chevron-right"></i>
+            Shop Now <i className="fa fa-chevron-right"></i>
           </Link>
         </button>
       </header>
 
-      <h2 class="title">Featured Categories</h2>
+      <h2 className="title">Featured Categories</h2>
 
-      <section class="home-cards grid-4-col">
+      <section className="home-cards grid-4-col">
         {homeCategory.map(({ _id, imageURL, categoryName }) => {
           return (
             <div
-              class="home-card"
+              className="home-card"
               key={_id}
               onClick={() => {
                 dispatchFilterState({
@@ -50,11 +51,12 @@ function Home() {
               }}
             >
               <img src={imageURL} alt="" />
-              <h1 class="overlay">{categoryName}</h1>
+              <h1 className="overlay">{categoryName}</h1>
             </div>
           );
         })}
       </section>
+
     </>
   );
 }
