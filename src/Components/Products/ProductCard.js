@@ -9,6 +9,7 @@ import {
   addToWishList,
   removeFromWishList,
 } from "../../Service/userAction";
+import {  toast } from 'react-toastify';
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -17,15 +18,15 @@ function ProductCard({ product }) {
   const { cart, wishlist } = userData;
 
   const addToCartHandler = (product) => {
-    token ? addToCart(dispatchUserData, token, product) : navigate("/login");
+    token ? addToCart(dispatchUserData, token, product,toast) : navigate("/login");
   };
 
   const wishlistHandler = (product) => {
     if (isAlreadyInWishList(wishlist, product))
-      removeFromWishList(dispatchUserData, token, product);
+      removeFromWishList(dispatchUserData, token, product,toast);
     else {
       token
-        ? addToWishList(dispatchUserData, token, product)
+        ? addToWishList(dispatchUserData, token, product,toast)
         : navigate("/login");
     }
   };

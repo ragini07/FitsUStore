@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 import { Loader } from "../index";
+
 import {
   filterByPrice,
   filterByRating,

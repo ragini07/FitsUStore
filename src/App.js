@@ -15,12 +15,25 @@ import {
 } from "./Components";
 import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
       <Header />
-
+      <ToastContainer
+position="bottom-right"
+toastStyle={{ backgroundColor: "rgb(65, 61, 61)" , color : "white" }} 
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={true}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

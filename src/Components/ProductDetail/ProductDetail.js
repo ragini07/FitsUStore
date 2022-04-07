@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import {  toast } from 'react-toastify';
 import { Loader } from "../index";
 import { useProducts } from "../../Context/products-context";
 import { useAuth } from "../../Context/auth-context";
@@ -29,7 +30,6 @@ function ProductDetail() {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/api/products/${id}`);
-        console.log(data.product);
         setProduct(data.product);
         setIsLoading(false);
       } catch (error) {
@@ -38,11 +38,11 @@ function ProductDetail() {
     })();
   }, []);
   const addToCartHandler = (product) => {
-    token ? addToCart(dispatchUserData, token, product) : navigate("/login");
+    token ? addToCart(dispatchUserData, token, product ,toast) : navigate("/login");
   };
   const wishlistHandler = (product) => {
     token
-      ? addToWishList(dispatchUserData, token, product)
+      ? addToWishList(dispatchUserData, token, product ,toast)
       : navigate("/login");
   };
   return (

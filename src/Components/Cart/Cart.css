@@ -103,6 +103,9 @@
      margin-left: auto;
     
  }
+ .action-btn{
+     cursor: pointer;
+ }
  .right-container{
      margin-top: 1rem;
      box-shadow: 0 5px 5px rgba(0,0,0,0.25);

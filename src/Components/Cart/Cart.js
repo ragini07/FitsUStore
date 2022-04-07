@@ -4,6 +4,7 @@ import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
 import { useProducts } from "../../Context/products-context";
 import { useNavigate, Link, Navigate } from "react-router-dom";
+import {  toast } from 'react-toastify';
 import { CouponModal } from "./CouponModal";
 import {
   removeFromCart,
@@ -46,14 +47,14 @@ export function Cart() {
     ? cartTotal.TotalAmt - (coupon.value * cartTotal.TotalAmt) / 100
     : cartTotal.TotalAmt;
   const removeFromCartHandler = (product) => {
-    removeFromCart(dispatchUserData, token, product);
+    removeFromCart(dispatchUserData, token, product,toast);
   };
   const updateCartHandler = (product, type) => {
     changeQtyInCart(dispatchUserData, token, product, type);
   };
   const wishlistHandler = (product) => {
-    removeFromCart(dispatchUserData, token, product);
-    addToWishList(dispatchUserData, token, product);
+    removeFromCart(dispatchUserData, token, product,toast);
+    addToWishList(dispatchUserData, token, product,toast);
   };
 
   const placeOrderHandler = () => {
@@ -113,7 +114,7 @@ export function Cart() {
 
                       <div className="text-container">
                         <button
-                          className="text-right"
+                          className="text-right action-btn"
                           onClick={() => removeFromCartHandler(product)}
                         >
                           <i className="fa fa-trash"></i>

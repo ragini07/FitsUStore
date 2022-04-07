@@ -1,6 +1,7 @@
 import "./Wishlist.css";
 import { useUser } from "../../Context/user-context";
 import { useAuth } from "../../Context/auth-context";
+import {  toast } from 'react-toastify';
 import {
   isAlreadyInCart,
   addToCart,
@@ -14,10 +15,10 @@ function WishList() {
   const { cart, wishlist } = userData;
 
   const addToCartHandler = (product) => {
-    token ? addToCart(dispatchUserData, token, product) : navigate("/login");
+    token ? addToCart(dispatchUserData, token, product,toast) : navigate("/login");
   };
   const wishlistHandler = (product) => {
-    removeFromWishList(dispatchUserData, token, product);
+    removeFromWishList(dispatchUserData, token, product,toast);
   };
   return (
     <>
