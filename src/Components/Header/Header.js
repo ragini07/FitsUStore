@@ -32,7 +32,7 @@ function Header() {
   return (
     <>
       <nav className="main-nav">
-        <img src={logo} alt="Brand Logo" />
+       <Link to="/"><img src={logo} alt="Brand Logo" /></Link> 
         <ul className="main-menu">
           <li>
             {" "}
