@@ -13,7 +13,7 @@ import { Response } from "miragejs";
 export const getAllProductsHandler = function () {
   return new Response(200, {}, { products: this.db.products });
 };
-
+console.log("shasganj")
 /**
  * This handler handles gets all products in the db.
  * send GET Request at /api/user/products/:productId
